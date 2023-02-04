@@ -19,3 +19,12 @@
 ## 元データ出典へのリンク
 - データ： https://front.geospatial.jp/houmu-chiseki/
 - 案内ページ： https://www.moj.go.jp/MINJI/minji05_00494.html
+
+
+## その他の情報
+### 問題のあるファイルに関する情報
+、ただいま、ファイル内容（形式等）の確認を行っております。*_summary ファイルについて、現在以下のファイルに、一部の行が正しく取り込まれない状況を把握しています。近いうちに修正予定です。*_zukaku ファイルについては、その後確認します。
+- 28hyogo
+- 29nara
+- 45miyazaki
+- 46kagoshima
