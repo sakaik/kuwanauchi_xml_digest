@@ -1,2 +1,15 @@
-# kuwanauchi_xml_digest
-The digest data of moj xml data. Xml file from https://github.com/amx-project/kuwanauch
+# 登記所備付地図データダイジェスト
+## このリポジトリは
+
+法務省がG空間情報センターを通じて公開している登記所備付地図データから情報を抽出、集約等の加工を行った情報を公開するものです。
+データの取得にあたっては、kuwanauchiプロジェクトのリポジトリを利用させていただきました。
+kuwanauchi リポジトリ：https://github.com/amx-project/kuwanauchi
+
+## 公開している主な情報
+　各XMLファイルのダイジェスト情報(市区町村、座標計、変換プログラムなどの情報）および、それに紐付けられた図郭情報。
+ 逆に言うと「登記所備付地図データ」のうち、空間属性と主題属性の情報を除いたものを整形したものです。
+
+
+## 元データ出典へのリンク
+- データ： https://front.geospatial.jp/houmu-chiseki/
+- 案内ページ： https://www.moj.go.jp/MINJI/minji05_00494.html
