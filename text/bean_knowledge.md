@@ -89,7 +89,7 @@ mysql> SELECT sokuti_hanbetu, COUNT(*) FROM t GROUP BY sokuti_hanbetu;
 ```
 
 
-##変換プログラム
+## 変換プログラム
 - データを見てみると、バージョン番号っぽいプログラム名が多数見られる
 
 mysql> SELECT conv_pgm, COUNT(*) FROM t GROUP BY conv_pgm;
