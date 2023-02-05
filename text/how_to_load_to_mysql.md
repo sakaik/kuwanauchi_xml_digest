@@ -117,5 +117,88 @@ UPDATE mojmap_summary SET map_name=replace(map_name,'$',',') WHERE map_name LIKE
 
 
 ### *_zukaku ファイル群の登録
+- テーブルを作成
+  - 数字っぽい列(スケールや年月日)でも文字型を使っているのは LOAD DATA時のwarning抑止のためです
 
-TBD
+```
+CREATE TABLE mojmap_zukaku (
+    filename      varchar(100),
+    map_no        varchar(50),
+    scale         varchar(10),
+    unknown_direct_flg  varchar(10),
+    leftbottom_x  float,
+    leftbottom_y  float,
+    lefttop_x     float,
+    lefttop_y     float,
+    rightbottom_x float,
+    rightbottom_y float,
+    righttop_x    float,
+    righttop_y    float,
+    maptype       varchar(100),
+    mapcategory   varchar(100),
+    mapmaterial   varchar(100),
+    sonae_ymd_y   varchar(4),
+    sonae_ymd_m   varchar(2),
+    sonae_ymd_d   varchar(2),
+    map_ymd_y     varchar(4),
+    map_ymd_m     varchar(2),
+    map_ymd_d     varchar(2)
+);
+CREATE INDEX idx_zkk_fn ON mojmap_zukaku(filename);
+```
+
+
+- csvデータをテーブルにロードする
+    - 詳細は上記 *_summary のロードの情報を参照ください
+    - ロード処理を行うSQL命令の例を以下に示します。`/home/ubuntu/csvdata/` の部分は、csvファイルを置いたフォルダに置換してください
+
+
+```
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/01hokkaido_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/02aomori_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/03iwate_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/04miyagi_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/05akita_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/06yamagata_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/07fukushima_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/08ibaraki_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/09tochigi_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/10gumma_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/11saitama_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/12chiba2_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/13tokyo_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/14kanagawa_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/15niigata_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/16toyama_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/17ishikawa_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/18fukui_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/19yamanashi_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/20nagano_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/21gifu_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/22shizuoka_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/23aichi_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/24mie_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/25shiga_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/26kyoto_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/27osaka_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/28hyogo_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/29nara_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/30wakayama_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/31tottori_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/32shimane_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/33okayama_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/34hiroshima_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/35yamaguchi_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/36tokushima_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/37kagawa_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/38ehime_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/39kochi_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/40fukuoka_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/41saga_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/42nagasaki_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/43kumamoto_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/44oita_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/45miyazaki_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/46kagoshima_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+LOAD DATA LOCAL INFILE '/home/ubuntu/csvdata/47okinawa_zukaku.csv' INTO TABLE mojmap_zukaku FIELDS TERMINATED BY ',' IGNORE 1 LINES;
+```
