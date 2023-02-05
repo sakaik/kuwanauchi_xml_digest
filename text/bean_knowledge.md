@@ -91,7 +91,7 @@ mysql> SELECT sokuti_hanbetu, COUNT(*) FROM t GROUP BY sokuti_hanbetu;
 
 ## 変換プログラム
 - データを見てみると、バージョン番号っぽいプログラム名が多数見られる
-
+```
 mysql> SELECT conv_pgm, COUNT(*) FROM t GROUP BY conv_pgm;
 +--------------+----------+
 | conv_pgm     | COUNT(*) |
@@ -110,10 +110,10 @@ mysql> SELECT conv_pgm, COUNT(*) FROM t GROUP BY conv_pgm;
 | 近畿         |        1 |
 | 九州沖縄     |        8 |
 +--------------+----------+
-
+```
 - 一部内容を確認すると、どうやら pgmとversionを逆に登録している感じか？
     - （ほぼ全県に渡って存在している模様）
-
+```
 mysql> SELECT filename, city_name, conv_pgm, conv_pgm_version, conv_pgm_param_version FROM t WHERE conv_pgm LIKE '1.3%' limit 4;
 +--------------------+--------------------+----------+------------------+------------------------+
 | filename           | city_name          | conv_pgm | conv_pgm_version | conv_pgm_param_version |
@@ -124,7 +124,7 @@ mysql> SELECT filename, city_name, conv_pgm, conv_pgm_version, conv_pgm_param_ve
 | 02201-4200-320.zip | 青森市             | 1.3.79   | TKY2JGD.par      | 2.1.1                  |
 +--------------------+--------------------+----------+------------------+------------------------+
 4 rows in set (0.00 sec)
-
+```
 
 
 
