@@ -28,7 +28,7 @@ CREATE TABLE mojmap_summary (
     - MySQL 8.0ではセキュリティ強化のため、ファイルからのロードについての制約が加わっています。ロードのために少し手続き（指定）が必要です。
     - 手続き（指定）は、サーバ側の設定、そして、ロード処理を行うmysqlクライアントの接続時の指定の両側が必要です。
         - サーバ側設定
-            - mysql>  `mysql> SET GLOBAL local_infile=on; `
+            - mysql>  `SET GLOBAL local_infile=on; `
         - クライアント接続時指定
             - $ `mysql -umyuser -p --local-infile=1`
     - ロード処理を行うSQL命令の例を以下に示します。`/home/ubuntu/csvdata/` の部分は、csvファイルを置いたフォルダに置換してください
