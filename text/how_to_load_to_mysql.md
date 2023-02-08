@@ -107,7 +107,8 @@ mysql> SELECT map_name FROM mojmap_summary WHERE map_name LIKE '%$%';
 +---------------------------------------------------+
 10 rows in set (0.19 sec)
 ```
-    - 問題なければ、以下のクエリで $ を , に置換します。
+
+- 問題なければ、以下のクエリで $ を , に置換します。
 ```
 UPDATE mojmap_summary SET map_name=replace(map_name,'$',',') WHERE map_name LIKE '%$%';
 ```
