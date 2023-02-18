@@ -29,14 +29,14 @@ def xy2do(x, y, japaneseKei):
     # 戻り rad単位で原点座標の(lat,lon)
     # https://www.gsi.go.jp/LAW/heimencho.html
     def getPhiLambFromKeiByRadian(kei):
-        ary = [(0, 0), 
+        ary = [(0, 0),
                (33.0, 129.5        ), (33.0, 131.0,       ), (36.0, 132+(10.0/60)), (33.0, 133.5        ), (36.0, 134+(20.0/60)),
                (36.0, 134+(20.0/60)), (36.0, 137+(10.0/60)), (36.0, 138.5        ), (36.0, 139+(50.0/60)), (36.0, 140+(50.0/60)),
                (44.0, 140+(15.0/60)), (44.0, 142+(15.0/60)), (44.0, 144+(15.0/60)), (26.0, 142.0        ), (26.0, 127.5        ),
                (26.0, 124.0        ), (26.0, 131.0,       ), (20.0, 136.0        ), (26.0, 154.0        )
                ]
         return (math.radians(ary[kei][0]), math.radians(ary[kei][1]))
-    
+
     def makeAryA(n):
         A0 = 1 + (n**2)/4.0 + (n**4)/64.0
         A1 = -(3.0/2)*(n - (n**3)/8.0 - (n**5)/64.0)
@@ -105,7 +105,7 @@ def xy2do(x, y, japaneseKei):
 
     Abar = m0a_per_1pn * aryA[0]
 
-    # ξ, η 
+    # ξ, η
     xi = (x + Sbar_phi0)/Abar
     eta = (y / Abar)
 
@@ -138,8 +138,8 @@ if __name__ == '__main__':
         sys.exit(-1)
 
     try:
-        x = float(sys.argv[1])    
-        y = float(sys.argv[2]) 
+        x = float(sys.argv[1])
+        y = float(sys.argv[2])
         kei = int(sys.argv[3])
     except ValueError:
         print("usage: %s <X> <Y>. X,Y is float number."%sys.argv[0])
