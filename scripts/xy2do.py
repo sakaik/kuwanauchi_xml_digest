@@ -10,7 +10,7 @@ copyright @sakaik, 2023
 '''
 ##おことわり:　上記利用規約は適宜変更していくことがあります
 
-import math
+import math, sys
 
 ### xy to Degree function ###
 # xy2do: args
@@ -131,9 +131,24 @@ if __name__ == '__main__':
     '''
     例：我孫子市役所
     平面9系  (-15035.6705 ,17617.1597 ) ->  緯度経度 35.864320, 140.028410
+      コマンド例: python3 xy2do.py -15035.6705 17617.1597 9
     '''
-    x = -15035.6705
-    y = 17617.1597
+    if (len(sys.argv)<=3):
+        print("usage: %s <X> <Y> <System(1-19)>."%sys.argv[0])
+        sys.exit(-1)
+
+    try:
+        x = float(sys.argv[1])    
+        y = float(sys.argv[2]) 
+        kei = int(sys.argv[3])
+    except ValueError:
+        print("usage: %s <X> <Y>. X,Y is float number."%sys.argv[0])
+        sys.exit(-1)
+
+    # x = -15035.6705
+    # y = 17617.1597
+    #print(x, y, ' is ', 35.864320, 140.028410, "(Expect)")
+
     (lat, lon) = xy2do(x,y,9)
-    print(x, y, ' is ', 35.864320, 140.028410, "(Expect)")
-    print(x, y,' to ',lat, lon, "Calced")
+    #print(x, y,' to ',lat, lon, "Calced")
+    print(lat, lon)
