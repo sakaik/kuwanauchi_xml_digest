@@ -149,6 +149,6 @@ if __name__ == '__main__':
     # y = 17617.1597
     #print(x, y, ' is ', 35.864320, 140.028410, "(Expect)")
 
-    (lat, lon) = xy2do(x,y,9)
+    (lat, lon) = xy2do(x,y,kei)
     #print(x, y,' to ',lat, lon, "Calced")
     print(lat, lon)
