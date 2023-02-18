@@ -5,7 +5,7 @@
 - 改造物の再配布の場合は、オリジナルとの区別のため、必ず追加のコピーライト表示をつけてください。
 - 無保証です。原開発者は本関数を使用した結果について一切の責任を負いません。
 - 本ファイルを利用したWebサービスには、本ファイルを使用した旨のクレジットを明記する必要はありません。が、謝意の表明は喜びます。
-ver. 0.1.0
+ver. 0.1.1
 copyright @sakaik, 2023
 '''
 ##おことわり:　上記利用規約は適宜変更していくことがあります
@@ -22,15 +22,15 @@ import numpy as np
 #   x, y: 平面直角座標系における X,Yの値
 #   japaneseKei: 日本の平面直角座標系の系番号（1～19）
 def xy2do(x, y, japaneseKei):
-    #楕円体長半径a、扁平率逆数F https://www.gsi.go.jp/sokuchikijun/datum-main.html
-    a=6378137.0
-    F=298.257222101
+    # 楕円体長半径a、扁平率逆数F https://www.gsi.go.jp/sokuchikijun/datum-main.html
+    a = 6378137.0
+    F = 298.257222101
 
     #平面直角座標系のX軸縮尺係数
-    m0=0.9999
+    m0 = 0.9999
 
-    #与えられた系の経度緯度をラジアンで返す。範囲外の値は与えられないものとする(手抜き)。ゼロが与えられた場合はゼロを原点として返す(意味はない)
-    #戻り rad単位で原点座標の(lat,lon)
+    # 与えられた系の経度緯度をラジアンで返す。範囲外の値は与えられないものとする(手抜き)。ゼロが与えられた場合はゼロを原点として返す(意味はない)
+    # 戻り rad単位で原点座標の(lat,lon)
     # https://www.gsi.go.jp/LAW/heimencho.html
     def getPhiLambFromKeiByRadian(kei):
         ary = [(0, 0), 
@@ -42,12 +42,12 @@ def xy2do(x, y, japaneseKei):
         return np.deg2rad(ary[kei])
     
     def makeAryA(n):
-        A0= 1 + (n**2)/4.0 + (n**4)/64.0
-        A1= -(3.0/2)*(n - (n**3)/8.0 - (n**5)/64.0)
-        A2= (15.0/16)*(n**2 - (n**4)/4.0)
-        A3= -(35.0/48)*(n**3 - (5.0/16)*(n**5))
-        A4= (315.0/512)*(n**4)
-        A5= -(693.0/1280)*(n**5)
+        A0 = 1 + (n**2)/4.0 + (n**4)/64.0
+        A1 = -(3.0/2)*(n - (n**3)/8.0 - (n**5)/64.0)
+        A2 = (15.0/16)*(n**2 - (n**4)/4.0)
+        A3 = -(35.0/48)*(n**3 - (5.0/16)*(n**5))
+        A4 = (315.0/512)*(n**4)
+        A5 = -(693.0/1280)*(n**5)
 
         return np.array([A0, A1, A2, A3, A4, A5])
 
@@ -93,7 +93,7 @@ def xy2do(x, y, japaneseKei):
         return res
 
 
-    #平面直角座標系原点座標取得
+    # 平面直角座標系原点座標取得
     (phi0, lambda0) = getPhiLambFromKeiByRadian(japaneseKei)
 
     # Fからnを算出
@@ -104,24 +104,24 @@ def xy2do(x, y, japaneseKei):
     aryBeta = makeAryBeta(n)
     aryDelta = makeAryDelta(n)
 
-    #Sbar_phi0, Abar
+    # Sbar_phi0, Abar
     m0a_per_1pn = m0 * a / (1.0+n)
     Sbar_phi0 = m0a_per_1pn * (aryA[0]*phi0 + calcPartOfSbar_phi0(aryA, phi0))
 
     Abar = m0a_per_1pn * aryA[0]
 
-    #ξ, η 
+    # ξ, η 
     xi = (x + Sbar_phi0)/Abar
     eta = (y / Abar)
 
-    #ξ', η'
+    # ξ', η'
     xidash = xi - calcPartOfXidash(aryBeta, xi, eta)
     etadash = eta - calcPartOfEtadash(aryBeta, xi, eta)
 
-    #χ
+    # χ
     chi = np.arcsin( np.sin(xidash)/np.cosh(etadash))
 
-    #経度緯度！ φ, λ
+    # 経度緯度！ φ, λ
     phi = chi + calcPartOfPhi(aryDelta, chi)
     lambda_ = lambda0 + np.arctan(np.sinh(etadash)/np.cos(xidash))
 
@@ -137,7 +137,7 @@ if __name__ == '__main__':
     例：我孫子市役所
     平面9系  (-15035.6705 ,17617.1597 ) ->  緯度経度 35.864320, 140.028410
     '''
-    x=-15035.6705
-    y=17617.1597
+    x = -15035.6705
+    y = 17617.1597
     (lat, lon) = xy2do(x,y,9)
     print(x, y,' to ',lat, lon)
