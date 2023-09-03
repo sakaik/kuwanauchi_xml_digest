@@ -3,9 +3,11 @@
 　2023年8月31日に公開されたデータのダイジェストを作成しました。
 - https://github.com/sakaik/kuwanauchi_xml_digest/tree/main/csvdata/metadata202308
 のフォルダ下にcsvファイルを置いています。
+
 また、集計結果についても
 - https://github.com/sakaik/kuwanauchi_xml_digest/blob/main/text/digest_202308.md
 にて公開しました。
+
 1月データは、
 - https://github.com/sakaik/kuwanauchi_xml_digest/tree/main/csvdata/metadata202301
 に移動してあります。
