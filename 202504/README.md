@@ -11,7 +11,10 @@
   - 先頭が "+" のものが202505データのみに存在するもの
 
 ## Sample
-こんな変化がわかります
+このデータを使うと、こんな変化がわかります
 - 区画が変わっていない（ように見える）が地番が付け替えられている例
 
 ![image](https://github.com/user-attachments/assets/f2f25ad8-df21-4d29-8390-d487fc4f1207)
+
+- 分筆された例
+![image](https://github.com/user-attachments/assets/e89c355e-2eac-48fa-b119-d4c1728ddd99)
