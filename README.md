@@ -1,4 +1,8 @@
 # 登記所備付地図データダイジェスト
+
+## お知らせ(2025/04/20)
+　202504データが公開されたので、202404データから変更された地番の抽出を行い、資料を公開しました。202504フォルダをご覧ください。
+https://github.com/sakaik/kuwanauchi_xml_digest/tree/main/202504
 ## お知らせ(2023/09/03): 2023年8月データ対応しました
 　2023年8月31日に公開されたデータのダイジェストを作成しました。
 - https://github.com/sakaik/kuwanauchi_xml_digest/tree/main/csvdata/metadata202308
