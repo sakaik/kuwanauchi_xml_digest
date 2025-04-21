@@ -18,3 +18,7 @@
 
 - 分筆された例
 ![image](https://github.com/user-attachments/assets/e89c355e-2eac-48fa-b119-d4c1728ddd99)
+
+- 区画整理されて、売り出す（売り出した）のかな、という例
+![image](https://github.com/user-attachments/assets/b84a14d3-c2ee-4237-a8ed-604db0542bfd)
+
